@@ -16,6 +16,14 @@ if [ ! \( -e $file_name \) ]; then
     exit 1
 fi
 
+# text file only
+is_text=`file -b $file_name | grep text | wc -l`
+if [ $is_text -eq 0 ]; then
+    echo "'$file_name' is not text."
+    exit 1
+fi
+
+
 # override
 tmp_file_name=$$
 sed -e "s/\t/    /g" $file_name | tr -d "\r" > $tmp_file_name
