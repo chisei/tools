@@ -26,4 +26,5 @@ fi
 
 # override
 tmp_file_name=$$
+sed -e "s/	/    /g" $file_name | tr -d "\r" > $tmp_file_name
 mv $tmp_file_name $file_name
